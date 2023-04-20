@@ -12,11 +12,16 @@ const startCreateListeners = () => { // foi necessário criar uma função para 
   }
 }
 
+function createBorder (element) {
+    element.style.border = '5px solid #000000'
+}
+
 const handleListeners = (element) => { // manipula cada elemento e chama seus filhos
   element.onmouseenter = (e) => { //início do hover
     console.log('entrou mouse', e)
     e.preventDefault() // evita que o botão execute seu comportamento (ex: ir para outra tela)
     e.stopPropagation() // evita que o pai também seja afetado
+    createBorder(element)
   }
 
   for (let e of element.children) { // chama os filhos dos elementos
