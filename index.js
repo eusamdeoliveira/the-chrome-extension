@@ -12,12 +12,17 @@ const startCreateListeners = () => { // foi necessário criar uma função para 
   }
 }
 
+function createBorder (element) {
+    element.style.border = '5px solid #000000'
+}
+
 const handleListeners = (element) => { // manipula cada elemento e chama seus filhos
   element.onmouseenter = (e) => { //início do hover
     console.log('entrou mouse', e)
     element.style.border = '5px solid #ff0000'
     e.preventDefault() // evita que o botão execute seu comportamento (ex: ir para outra tela)
     e.stopPropagation() // evita que o pai também seja afetado
+    createBorder(element)
   }
 
   // remover a borda quando o mouse sair: onmouseleave
