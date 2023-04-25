@@ -1,6 +1,6 @@
 {
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "saiHTML",
+  "description": "Removedor de Elementos HTML",
   "version": "1.0",
   "manifest_version": 3,
   "content_scripts": [
@@ -8,5 +8,10 @@
       "js": ["index.js"],
       "matches": ["http://*/*", "https://*/*"]
     }
-  ]
+  ], 
+  "action": {
+    "browser_style": true,
+    "default_title": "saiHTML",
+    "default_popup": "index.html"
+  }
 }
