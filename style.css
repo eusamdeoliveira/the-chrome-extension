@@ -14,7 +14,9 @@
 }
 
 body {
-    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div {
@@ -26,5 +28,6 @@ div {
     flex-wrap: wrap;
     background-color: aqua;
     padding: 15px;
-
+    width: 96%;
+    height: 96%;
 }
