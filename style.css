@@ -1,0 +1,30 @@
+:root {
+    --txt-normal: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --black-light: 
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    user-select: none;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+body {
+    background: none;
+}
+
+div {
+    border-radius: 10px;
+    font-family: var(--txt-normal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: aqua;
+    padding: 15px;
+
+}
