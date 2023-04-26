@@ -12,8 +12,15 @@ const startCreateListeners = () => { // foi necessário criar uma função para 
   }
 }
 
+function removeParentBorder(element) {
+  if(!element || !element.style || !element.style.border) return
+  element.style.border = 'none'
+  return removeParentBorder(element.parentNode)
+}
+
 const handleListeners = (element) => { // manipula cada elemento e chama seus filhos
   element.onmouseenter = (e) => { //início do hover
+    removeParentBorder(element)
     element.style.border = '5px solid #ff0000'
     e.preventDefault() // evita que o botão execute seu comportamento (ex: ir para outra tela)
     e.stopPropagation() // evita que o pai também seja afetado
