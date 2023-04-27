@@ -5,7 +5,7 @@
   "manifest_version": 3,
   "content_scripts": [
     {
-      "js": ["index.js"],
+      "js": ["content.js"],
       "matches": ["http://*/*", "https://*/*"]
     }
   ], 
@@ -16,7 +16,7 @@
       "32": "button/geo-32.png"
     },
     "default_title": "",
-    "default_popup": "index.html",
+    "default_popup": "popup.html",
     "theme_icons": [{
       "light": "icons/geo-16-light.png",
       "dark": "icons/geo-16.png",
