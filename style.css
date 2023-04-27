@@ -1,6 +1,9 @@
 :root {
     --txt-normal: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    --black-light: 
+    --almost-black: #0D0D0D;
+    --grafit: #404040;
+    --light: #F2F2F2;
+    --transparent: rgba(0, 0, 0, 0);
 }
 
 * {
@@ -17,17 +20,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 200px;
+    height: 200px;
 }
 
 div {
     border-radius: 10px;
     font-family: var(--txt-normal);
+    color: var(--light);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-color: aqua;
+    background: linear-gradient(var(--grafit),var(--almost-black));
     padding: 15px;
     width: 96%;
     height: 96%;
+}
+
+h1 {
+    font-size: 24pt;
+}
+
+label {
+    font-size: 16pt;
+    width: 99%;
+    text-align: center;
+}
+
+input#colorpicker {
+    border: none;
+    background-color: var(--transparent);
+    width: 70%;
+}
+
+input#aticação {
+    size: 100px;
 }

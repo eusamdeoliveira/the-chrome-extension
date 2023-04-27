@@ -11,10 +11,8 @@ function sendMessage(key, value) {
   );
 } 
 
-setTimeout(() => {
-  sendMessage('active', true)
-}, 1000)
-
-setTimeout(() => {
-  sendMessage('active', false)
-}, 11000)
+let checkbox = document.querySelector("#ativação")
+checkbox.addEventListener('click', function (event) {
+  sendMessage('active', event.target.checked)
+  console.log(event.target.checked)
+})
