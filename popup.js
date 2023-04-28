@@ -1,3 +1,11 @@
+if(document.readyState !== 'complete') {
+  addEventListener('load', () => {
+    startDOMEvent() 
+  })
+} else {
+  startDOMEvent() 
+}
+
 function sendMessage(key, value) {
   chrome.tabs.query(
     {
@@ -9,10 +17,11 @@ function sendMessage(key, value) {
       chrome.tabs.sendMessage(activeTab.id, { [key]: value });
     }
   );
-} 
+}
 
-let checkbox = document.querySelector("#ativação")
-checkbox.addEventListener('click', function (event) {
-  sendMessage('active', event.target.checked)
-  console.log(event.target.checked)
-})
+function startDOMEvent() {
+  let checkbox = document.querySelector("#ativação")
+  checkbox.addEventListener('click', function (event) {
+    sendMessage('active', event.target.checked)
+  })
+}
