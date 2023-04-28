@@ -1,3 +1,5 @@
+let color = "#ff0000"
+
 if(document.readyState !== 'complete') { // Verifica se o DOM já está preparado para ser manipulado
   addEventListener('load', () => { // espera ficar pronto
     startChromeListener() 
@@ -9,12 +11,15 @@ if(document.readyState !== 'complete') { // Verifica se o DOM já está preparad
 function startChromeListener() {
   chrome.runtime.onMessage.addListener(
     function(request, sender) {
-      console.log(sender)
-      console.log(request)
       if( request.active === true ) {
         startCreateListeners()
       } else {
         startRemoveListeners()
+      }
+      if (request.color) {
+        color = request.color
+        startRemoveListeners()
+        startCreateListeners()  
       }
     }
   );
@@ -58,7 +63,7 @@ function mouseenter(e) {
   const element = e.target
 
   removeParentBorder(element)
-  element.style.border = '5px solid #ff0000'
+  element.style.border = '5px solid ' + color
   e.preventDefault() // evita que o botão execute seu comportamento (ex: ir para outra tela)
   e.stopPropagation() // evita que o pai também seja afetado
 }
