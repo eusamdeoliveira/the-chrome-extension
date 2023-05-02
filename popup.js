@@ -27,10 +27,12 @@ function colocaNoStorage(key, value) {
   });
 }
 
-function pegaNoStorage(key) {
-  chrome.storage.local.get([key]).then((result) => {
-    console.log("Value currently is " + result.key);
-  });
+function pegaNoStorage(key, callback) {
+  /**
+   * Exemplo de callback
+   * (result) => { valor = result.key }
+   */
+  chrome.storage.local.get([key]).then(callback);
 }
 
 function colorPick (nome, value) {
