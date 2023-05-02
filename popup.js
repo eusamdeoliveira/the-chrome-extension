@@ -42,15 +42,22 @@ function colorPick (nome, value) {
 function startDOMEvent() {
   let checkbox = document.querySelector("#ativação")
   // pegar o valor no storage (active)
+  pegaNoStorage("active",(result)=>{
+    checkbox.checked = result
+  })
   checkbox.addEventListener('click', function (event) {
     sendMessage('active', event.target.checked)
     //salvar o valor no storage (active)
-
+    colocaNoStorage("active", event.target.value)
   })
   let colorPicker = document.querySelector("#colorpicker")
   // pegar o valor no storage (color)
+  pegaNoStorage("color",(result)=>{
+    colorPicker.value = result
+  })
   colorPicker.addEventListener('change', function (event) {
     colorPick('color', event.target.value)
     //salvar o valor no storage (color)
+    colocaNoStorage("color", event.target.value)
   })
 }
