@@ -8,7 +8,10 @@
       "js": ["content.js"],
       "matches": ["http://*/*", "https://*/*"]
     }
-  ], 
+  ],
+  "permissions": [
+    "storage"
+  ],
   "action": {
     "browser_style": true,
     "default_icon": {
