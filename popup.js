@@ -43,7 +43,7 @@ function startDOMEvent() {
   let checkbox = document.querySelector("#ativação")
   // pegar o valor no storage (active)
   pegaNoStorage("active",(result)=>{
-    checkbox.checked = result
+    checkbox.checked = result.key
   })
   checkbox.addEventListener('click', function (event) {
     sendMessage('active', event.target.checked)
@@ -53,7 +53,7 @@ function startDOMEvent() {
   let colorPicker = document.querySelector("#colorpicker")
   // pegar o valor no storage (color)
   pegaNoStorage("color",(result)=>{
-    colorPicker.value = result
+    colorPicker.value = result.key
   })
   colorPicker.addEventListener('change', function (event) {
     colorPick('color', event.target.value)
