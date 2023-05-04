@@ -1,5 +1,3 @@
-
-
 if(document.readyState !== 'complete') {
   addEventListener('load', () => {
     startDOMEvent() 
@@ -22,17 +20,11 @@ function sendMessage(key, value) {
 }
 
 function colocaNoStorage(key, value) {
-  chrome.storage.local.set({ [key]: value }).then(() => {
-    console.log("Value is set to " + value);
-  });
+  chrome.storage.local.set({ [key]: value })
 }
 
 function pegaNoStorage(key, callback) {
-  /**
-   * Exemplo de callback
-   * (result) => { valor = result.key }
-   */
-  chrome.storage.local.get([key]).then(callback);
+  chrome.storage.local.get([key]).then(callback)
 }
 
 function colorPick (nome, value) {
@@ -41,23 +33,23 @@ function colorPick (nome, value) {
 
 function startDOMEvent() {
   let checkbox = document.querySelector("#ativação")
-  // pegar o valor no storage (active)
-  pegaNoStorage("active",(result)=>{
-    checkbox.checked = result.key
+  pegaNoStorage("active", (result) => {
+    if(!('active' in result)) return
+    checkbox.checked = result.active
+    sendMessage('active', checkbox.checked)
   })
   checkbox.addEventListener('click', function (event) {
     sendMessage('active', event.target.checked)
-    //salvar o valor no storage (active)
-    colocaNoStorage("active", event.target.value)
+    colocaNoStorage("active", event.target.checked)
   })
   let colorPicker = document.querySelector("#colorpicker")
-  // pegar o valor no storage (color)
-  pegaNoStorage("color",(result)=>{
-    colorPicker.value = result.key
+  pegaNoStorage("color", (result) => {
+    if(!('color' in result)) return
+    colorPicker.value = result.color
+    sendMessage('color', colorPicker.value)
   })
   colorPicker.addEventListener('change', function (event) {
     colorPick('color', event.target.value)
-    //salvar o valor no storage (color)
     colocaNoStorage("color", event.target.value)
   })
 }

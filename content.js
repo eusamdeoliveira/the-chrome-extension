@@ -1,4 +1,5 @@
 let color = "#ff0000"
+let isActive = false
 
 if(document.readyState !== 'complete') { // Verifica se o DOM já está preparado para ser manipulado
   addEventListener('load', () => { // espera ficar pronto
@@ -10,19 +11,26 @@ if(document.readyState !== 'complete') { // Verifica se o DOM já está preparad
 
 function startChromeListener() {
   chrome.runtime.onMessage.addListener(
-    function(request, sender) {
-      if( request.active === true ) {
-        startCreateListeners()
-      } else {
+    function(request) {
+      if('active' in request && request.active === true ) {
+        restartListeners()
+        isActive = true
+      } else if ('active' in request && request.active === false){
         startRemoveListeners()
-      }
-      if (request.color) {
+        isActive = false
+      } else if (request.color) {
         color = request.color
-        startRemoveListeners()
-        startCreateListeners()  
+        if(isActive) {
+          restartListeners()
+        }
       }
     }
   );
+}
+
+function restartListeners() {
+  startRemoveListeners()
+  startCreateListeners()
 }
 
 const startCreateListeners = () => { // foi necessário criar uma função para não colocar esse evento na tag body (apagaria tudo de uma vez)
