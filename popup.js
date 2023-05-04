@@ -34,9 +34,9 @@ function colorPick (nome, value) {
 function startDOMEvent() {
   let checkbox = document.querySelector("#ativação")
   pegaNoStorage("active", (result) => {
-    
-    if(!result.active) return
+    if(!('active' in result)) return
     checkbox.checked = result.active
+    sendMessage('active', checkbox.checked)
   })
   checkbox.addEventListener('click', function (event) {
     sendMessage('active', event.target.checked)
@@ -44,9 +44,9 @@ function startDOMEvent() {
   })
   let colorPicker = document.querySelector("#colorpicker")
   pegaNoStorage("color", (result) => {
-
-    if(!result.color) return
+    if(!('color' in result)) return
     colorPicker.value = result.color
+    sendMessage('color', colorPicker.value)
   })
   colorPicker.addEventListener('change', function (event) {
     colorPick('color', event.target.value)

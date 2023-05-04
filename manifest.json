@@ -6,7 +6,7 @@
   "content_scripts": [
     {
       "js": ["content.js"],
-      "matches": ["http://*/*", "https://*/*"]
+      "matches": ["https://*/*", "http://*/*"]
     }
   ],
   "permissions": [
